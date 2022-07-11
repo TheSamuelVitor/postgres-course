@@ -24,6 +24,14 @@ from person
 where gender = 'Male' and country_birth = 'United States' 
 order by first_name;
 
+select count(*) from person where gender = 'Male';
+
+-- selects the countries that are repeated
+select distinct country_birth from person order by country_birth desc;
+
+select * from person 
+where gender = 'Male' and country_birth = 'Poland' or country_birth = 'France' 
+order by date_of_birth;
 
 -- update a value
 update person
@@ -36,9 +44,15 @@ drop database test;
 -- delete a table
 drop table person;
 
-
 -- count a column
 -- count the amount of person that is male and the country of birth is 'United States'
 select count(*)
 from person
 where gender = 'Male' and country_birth = 'United States';
+
+-- operators that can be used
+-- 1 < 2
+-- 1 > 2
+-- 1 <= 2
+-- 1 >= 2
+-- 1 = 2
