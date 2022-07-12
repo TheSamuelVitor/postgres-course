@@ -110,3 +110,30 @@ select country_birth, count(*) from person
 group by country_birth
 having count(*) >= 40 -- shows only the countries that has more than 40 people
 order by country_birth
+
+-- calculating the max and min price of a car
+select min(price), max(price) from car
+
+-- round the average price of a car
+select round(avg(price)) from car
+
+select make, max(price) from car group by make
+order by max(price) desc
+
+-- shows the sum of the prices of a car
+select sum(price) from car
+
+-- shows the make, max, min, average and sum of the price of the car grouped by the make
+select make, max(price), min(price), avg(price), sum(price) from car
+group by make
+order by make
+
+-- mathemathic operators
+select 10 + 2;			-- = 12
+select 10 - 2;			-- = 8
+select 10 * 2;			-- = 20
+select 10 / 2;			-- = 5
+select 10 % 3;			-- = 1
+select 10 ^ 3;			-- = 1000
+select factorial(5)		-- = 120
+
