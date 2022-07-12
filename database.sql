@@ -71,21 +71,6 @@ select * from person offset 5 limit 5;
 -- selects the people where country_birth is in the parenteses
 select * from person where country_birth in ('Brazil', 'China', 'France')
 
-
--- more complex select
-select first_name, last_name, date_of_birth 			-- selects these columns
-from person												-- from this table
-where country_birth in ('Brazil', 'China', 'France')    -- where country of birth is inside these paretheses
-and gender <> 'Female' 									-- and gender is different from 'Female'
-order by date_of_birth desc								-- order by date_of_birth
-limit 10												-- show only the 10 first results
-offset 4												-- do not show the first 4 results
-
-
-select * from person
-where country_birth in ('China', 'Brazil', 'France', 'Mexico', 'Portugal', 'Nigeria')
-order by country_birth
-
 -- selects the people where the date of birth is between the given dates
 select * from person where date_of_birth between date '2022-01-01' and '2022-12-31'
 
@@ -117,9 +102,6 @@ select min(price), max(price) from car
 -- round the average price of a car
 select round(avg(price)) from car
 
-select make, max(price) from car group by make
-order by max(price) desc
-
 -- shows the sum of the prices of a car
 select sum(price) from car
 
@@ -137,3 +119,35 @@ select 10 % 3;			-- = 1
 select 10 ^ 3;			-- = 1000
 select factorial(5)		-- = 120
 
+-- an example to use the operators
+select id, make, model, price, round(price - (price / 10)), price*0.1 from car
+
+-- to change the name of the column put the 'as' after it
+select id, make, model, price as original_price, round(price*0.1) as discount, 
+round(price - (price / 10)) as price_with_Discount from car
+
+-- writes the message in the email that are null
+select coalesce(email, 'email not provided') from person
+
+
+--------------------------------------------------------
+-------- more complex select
+--------------------------------------------------------
+select id, first_name, last_name, gender, date_of_birth,
+coalesce(email, 'email not provided') as email, country_birth
+from person
+
+select make, max(price) from car group by make
+order by max(price) desc
+
+select * from person
+where country_birth in ('China', 'Brazil', 'France', 'Mexico', 'Portugal', 'Nigeria')
+order by country_birth
+
+select first_name, last_name, date_of_birth 			-- selects these columns
+from person												-- from this table
+where country_birth in ('Brazil', 'China', 'France')    -- where country of birth is inside these paretheses
+and gender <> 'Female' 									-- and gender is different from 'Female'
+order by date_of_birth desc								-- order by date_of_birth
+limit 10												-- show only the 10 first results
+offset 4												-- do not show the first 4 results
