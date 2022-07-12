@@ -58,6 +58,7 @@ where gender = 'Male' and country_birth = 'United States';
 -- 1 = 2
 -- 1 <> 2 (diferent)
 
+
 -- Limiting the quantity to show
 select * from person limit 10;
 
@@ -67,3 +68,45 @@ select * from person offset 5 fetch first 5 row only;
 -- the offset number says how many rows shouldn't be shown
 select * from person offset 5 limit 5;
 
+-- selects the people where country_birth is in the parenteses
+select * from person where country_birth in ('Brazil', 'China', 'France')
+
+
+-- more complex select
+select first_name, last_name, date_of_birth 			-- selects these columns
+from person												-- from this table
+where country_birth in ('Brazil', 'China', 'France')    -- where country of birth is inside these paretheses
+and gender <> 'Female' 									-- and gender is different from 'Female'
+order by date_of_birth desc								-- order by date_of_birth
+limit 10												-- show only the 10 first results
+offset 4												-- do not show the first 4 results
+
+
+select * from person
+where country_birth in ('China', 'Brazil', 'France', 'Mexico', 'Portugal', 'Nigeria')
+order by country_birth
+
+-- selects the people where the date of birth is between the given dates
+select * from person where date_of_birth between date '2022-01-01' and '2022-12-31'
+
+-- looks for the email where email ends with '.com'
+-- % = any character
+select * from person where email like '%.com'
+
+-- anyone that has @google in their email
+select * from person where email like '%@google%'
+
+-- with a specific amount of charactes
+select * from person where email like '________@%'
+
+-- same as like but ignores the case
+select * from person where country_birth ilike 'p%'
+
+-- counts how many people are from the country_birth
+select country_birth,count(*) from person
+group by country_birth -- groups the people that has the same country_birth
+
+select country_birth, count(*) from person
+group by country_birth
+having count(*) >= 40 -- shows only the countries that has more than 40 people
+order by country_birth
