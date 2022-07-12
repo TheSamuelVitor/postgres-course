@@ -56,3 +56,14 @@ where gender = 'Male' and country_birth = 'United States';
 -- 1 <= 2
 -- 1 >= 2
 -- 1 = 2
+-- 1 <> 2 (diferent)
+
+-- Limiting the quantity to show
+select * from person limit 10;
+
+-- another way to limit the amount to show
+select * from person offset 5 fetch first 5 row only;
+
+-- the offset number says how many rows shouldn't be shown
+select * from person offset 5 limit 5;
+
