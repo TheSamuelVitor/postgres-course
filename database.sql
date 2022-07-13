@@ -151,3 +151,8 @@ and gender <> 'Female' 									-- and gender is different from 'Female'
 order by date_of_birth desc								-- order by date_of_birth
 limit 10												-- show only the 10 first results
 offset 4												-- do not show the first 4 results
+
+-- extractiong someone's age
+select id, first_name, last_name, gender, date_of_birth, email, country_birth,
+age(now()::date, date_of_birth) as age
+from person
