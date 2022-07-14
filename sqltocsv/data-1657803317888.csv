@@ -1,0 +1,4 @@
+"id","first_name","last_name","gender","email","date_of_birth","country_of_birth","car_id","id-2","make","model","price"
+1,"Samuel","Vitor","Male","samuelvitor@gmail.com","2001-04-18","Brazil",1,1,"Chevrolet","Camaro",210000.0
+2,"Vinicius","Guedes","Male","v.guedes@gmail.com","2004-01-15","Brazil",2,2,"Toyota","Hilux",160000.0
+3,"Dayanne","Lucy","Female",NULL,"2002-07-08","Brazil",NULL,NULL,NULL,NULL,NULL
