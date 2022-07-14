@@ -135,3 +135,10 @@ offset 4												-- do not show the first 4 results
 select id, first_name, last_name, gender, date_of_birth, email, country_birth,
 age(now()::date, date_of_birth) as age
 from person
+
+select 
+person.first_name, person.last_name, 
+car.make, car.model, car.price
+from person
+join car on person.car_id = car.id
+where make = 'Chevrolet'
