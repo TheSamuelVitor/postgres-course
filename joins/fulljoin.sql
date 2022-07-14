@@ -1,0 +1,2 @@
+-- joins the columns from both given tables
+-- shows also the rows that are nulls
